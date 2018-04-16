@@ -17,6 +17,7 @@ services:
     - DATABASE_TYPE=postgres
     - DATABASE_CLASS=mailman.database.postgresql.PostgreSQLDatabase
     - HYPERKITTY_API_KEY=someapikey
+    - UWSGI_STATIC_MAP=/static=/opt/mailman-web-data/static
     networks:
       mailman:
         ipv4_address: 172.19.199.2
@@ -33,9 +34,16 @@ services:
     volumes:
     - /opt/mailman/web:/opt/mailman-web-data
     environment:
+    - SERVE_FROM_DOMAIN=mailman-web.sysbind.biz
     - DATABASE_TYPE=postgres
     - DATABASE_URL=postgres://mailman:mailmanpass@database/mailmandb
     - HYPERKITTY_API_KEY=someapikey
+    - SECRET_KEY='somesecret'
+    - MAILMAN_ADMIN_USER='admin'
+    - MAILMAN_ADMIN_EMAIL='asaf@sysbind.co.il'
+    ports:
+      - "8000:8000"
+      - "8080:8080"
     networks:
       mailman:
         ipv4_address: 172.19.199.3
@@ -53,6 +61,18 @@ services:
       mailman:
         ipv4_address: 172.19.199.4
 
+  nginx:
+    restart: always
+    image: nginx
+    volumes:
+      - /opt/mailman/web/static:/usr/share/nginx/html/static
+      - ./nginx-uwsgi.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    networks:
+      mailman:
+        ipv4_address: 172.19.199.9
+        
 networks:
    mailman:
      driver: bridge
