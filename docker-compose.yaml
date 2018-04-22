@@ -34,7 +34,7 @@ services:
     volumes:
     - /opt/mailman/web:/opt/mailman-web-data
     environment:
-    - SERVE_FROM_DOMAIN=mailman-web.sysbind.biz
+    - SERVE_FROM_DOMAIN=mailman.education.gov.il
     - DATABASE_TYPE=postgres
     - DATABASE_URL=postgres://mailman:mailmanpass@database/mailmandb
     - HYPERKITTY_API_KEY=someapikey
