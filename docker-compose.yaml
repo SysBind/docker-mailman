@@ -13,11 +13,13 @@ services:
     depends_on:
     - database
     environment:
-    - DATABASE_URL=postgres://mailman:mailmanpass@database/mailmandb
+    - DATABASE_URL=postgres://mailman:$MAILMANDBPASS@database/mailmandb
     - DATABASE_TYPE=postgres
     - DATABASE_CLASS=mailman.database.postgresql.PostgreSQLDatabase
-    - HYPERKITTY_API_KEY=someapikey
+    - HYPERKITTY_API_KEY=$HYPERKITTYAPIKEY
     - UWSGI_STATIC_MAP=/static=/opt/mailman-web-data/static
+    ports:
+      - "8024:8024"
     networks:
       mailman:
         ipv4_address: 172.19.199.2
