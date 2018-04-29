@@ -39,7 +39,7 @@ services:
     - SERVE_FROM_DOMAIN=mailman.education.gov.il
     - DATABASE_TYPE=postgres
     - DATABASE_URL="postgres://mailman:$MAILMANDBPASS@database/mailmandb"
-    - HYPERKITTY_API_KEY={{
+    - HYPERKITTY_API_KEY="somekey"
     - SECRET_KEY='somesecret'
     - MAILMAN_ADMIN_USER='admin'
     - MAILMAN_ADMIN_EMAIL='asaf@sysbind.co.il'
