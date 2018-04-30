@@ -36,7 +36,7 @@ services:
     volumes:
     - /opt/mailman/web:/opt/mailman-web-data
     environment:
-    - SERVE_FROM_DOMAIN=mailman.education.gov.il
+    - SERVE_FROM_DOMAIN=$SERVE_FROM_DOMAIN
     - DATABASE_TYPE=postgres
     - DATABASE_URL=postgres://mailman:$MAILMANDBPASS@database/mailmandb
     - HYPERKITTY_API_KEY="somekey"
