@@ -26,6 +26,7 @@ RUN set -ex \
 		dj-database-url \
 		mysqlclient \
 		typing \
+		parse \
 	&& apk del .build-deps \
 	&& addgroup -S mailman \
 	&& adduser -S -G mailman mailman \
