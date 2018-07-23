@@ -1,6 +1,6 @@
 FROM python:2.7-alpine3.6
 
-MAINTAINER Abhilash Raj
+MAINTAINER Asaf Ohayon <asaf@sysbind.co.il>
 
 # Add needed files for uwsgi server + settings for django
 COPY mailman-web /opt/mailman-web
@@ -17,7 +17,7 @@ RUN set -ex \
 	   postgresql-client mysql-client py-mysqldb curl mailcap \
 	&& pip install -U django==1.11 pip \
 	&& pip install mailmanclient==3.1.1 \
-		postorius==1.1.2 \
+		postorius==1.2.1 \
 		hyperkitty==1.1.4 \
 		django-mailman3==1.1.0 \
 		whoosh \

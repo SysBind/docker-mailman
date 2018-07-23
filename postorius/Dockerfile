@@ -1,6 +1,6 @@
 FROM python:3.6-alpine
 
-MAINTAINER Abhilash Raj
+MAINTAINER Asaf Ohayon <asaf@sysbind.co.il>
 
 # Add needed files for uwsgi server + settings for django
 COPY mailman-web /opt/mailman-web
@@ -16,7 +16,7 @@ RUN set -ex \
 	&& apk add --no-cache --virtual .mailman-rundeps bash \
 	   postgresql-client mysql-client py-mysqldb curl mailcap \
 	&& pip install -U Django>=1.11 pip \
-	&& pip install postorius==1.2.0a1 \
+	&& pip install postorius==1.2.1 \
 		uwsgi \
 		psycopg2 \
 		dj-database-url \

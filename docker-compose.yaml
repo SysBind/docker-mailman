@@ -2,7 +2,7 @@ version: '2'
 
 services:
   mailman-core:
-    image: maxking/mailman-core:0.1
+    image: sysbind/mailman-core:3.2.0
     container_name: mailman-core
     hostname: mailman-core
     volumes:
@@ -26,7 +26,7 @@ services:
         ipv4_address: 172.19.199.2
 
   mailman-web:
-    image: maxking/mailman-web:0.1
+    image: sysbind/mailman-web:1.1.4-1.2.1
     container_name: mailman-web
     hostname: mailman-web
     depends_on:
