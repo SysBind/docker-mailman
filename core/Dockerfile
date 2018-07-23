@@ -7,20 +7,14 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 #Install all required packages, add user for executing mailman and set execution rights for startup script
 RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev postgresql-dev \
-    && apk add bash su-exec postgresql-client mysql-client curl git \
+    && apk add --virtual build-deps gcc python3-dev musl-dev postgresql-dev libffi-dev \
+    && apk add bash su-exec postgresql-client mysql-client curl \
     && pip install psycopg2 \
                    mailman==3.1.1 \
                    mailman-hyperkitty==1.1.0 \
                    pymysql \
     && apk del build-deps \
     && adduser -S mailman
-
-# Install mailmanclient pip package
-RUN pip install --upgrade pip && pip install mailmanclient
-
-# clone the mailman-tools repository
-RUN git clone https://gitlab.med.stanford.edu/irt-public/mailman-tools.git /mailman-tools
 
 # Change the working directory.
 WORKDIR /opt/mailman
