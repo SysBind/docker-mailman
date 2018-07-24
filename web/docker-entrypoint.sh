@@ -142,6 +142,4 @@ fi
 # directory for it. Also chown the logs directory to write the files.
 chown mailman:mailman /opt/mailman-web-data -R
 
-bash
-
 exec $@
