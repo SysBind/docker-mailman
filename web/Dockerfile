@@ -18,7 +18,7 @@ RUN set -ex \
 	&& pip install -U django==1.11 pip \
 	&& pip install mailmanclient==3.2.0 \
 		postorius==1.1.2 \
-		hyperkitty==1.2.0 \
+		hyperkitty==1.1.4 \
 		django-mailman3==1.1.0 \
 		whoosh \
 		uwsgi \
