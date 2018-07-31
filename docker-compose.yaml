@@ -17,7 +17,7 @@ services:
     - DATABASE_URL=postgres://mailman:$MAILMANDBPASS@database/mailmandb
     - DATABASE_TYPE=postgres
     - DATABASE_CLASS=mailman.database.postgresql.PostgreSQLDatabase
-    - HYPERKITTY_API_KEY=$HYPERKITTYAPIKEY
+    - HYPERKITTY_API_KEY="somekey"
     - UWSGI_STATIC_MAP=/static=/opt/mailman-web-data/static
     ports:
       - "8024:8024"
